@@ -1,0 +1,45 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.title = "List"; }
+@using Crud.Models;
+@model List<Product>
+
+<div class="d-block" style="margin:10px">
+    <div style="margin:10px">
+        <button>
+            <a href="~/Home/AddProduct" class="btn btn-simple"><i class="fas fa-plus"></i> Add product</a>
+        </button>
+    </div>
+    <div class="product-search" style="margin:10px">
+        <label class="d-block">Product name</label>
+        <input id="product-search-input" />
+    </div>
+    <div style="margin:10px">
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class=" col-md-1">#</th>
+                    <th class=" col-md-2">Name</th>
+                    <th class=" col-md-5">Description</th>
+                    <th class=" col-md-2">Price</th>
+                    <th class=" col-md-2 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int count = 0;
+                    foreach (var product in @Model)
+                    {
+                        count++;
+        <tr class="row">
+            <td class="col-md-1">@count</td>
+            <td class="col-md-2">@Html.ActionLink($"{product.Name}", "Details", new { id = product.ID })</td>
+            <td class="col-md-5">@product.Description</td>
+            <td class="col-md-2">@product.Price </td>
+            <td class="col-md-2 text-right">
+                @Html.ActionLink("Edit", "Edit", new { id = product.ID }, new { @class = "btn-xs btn-warning " })
+                @Html.ActionLink("Delete", "ToDelete", new { id = product.ID }, new { @class = "btn-danger btn-xs" })
+            </td>
+        </tr> } }
+            </tbody>
+        </table>
+    </div>
+</div>

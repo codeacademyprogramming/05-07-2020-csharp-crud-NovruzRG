@@ -1,0 +1,36 @@
+﻿@model Crud.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <div style="margin:10px">
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class=" col-md-3"> @Html.DisplayNameFor(model => model.Name)</th>
+                    <th class=" col-md-5">@Html.DisplayNameFor(model => model.Description)</th>
+                    <th class=" col-md-2"> @Html.DisplayNameFor(model => model.Price)</th>
+                    <th class=" col-md-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    <tr class="row">
+                        <td class="col-md-3"> @Html.DisplayFor(model => model.Name)</td>
+                        <td class="col-md-5"> @Html.DisplayFor(model => model.Description)n</td>
+                        <td class="col-md-2"> @Html.DisplayFor(model => model.Price) </td>
+                        <td class="col-md-3">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn-xs btn-warning " }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
